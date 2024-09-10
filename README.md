@@ -1,4 +1,5 @@
 # palavras_cruzadas_com_ER_em_python
+
 Trabalho em grupo realizado para a disciplina Linguagens Formais e Autômatos ministrada pela professora Layse da universidade Tiradentes.
 
 Este jogo é semelhante ao sudoku e as tradicionais palavras cruzadas, onde é necessário adivinhar as letras corretas
