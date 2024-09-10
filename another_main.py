@@ -19,7 +19,7 @@ def obter_tamanho_matriz():
 
 def gerar_expressao_aleatoria():
     caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    tipos = ["*", "+", "?", "{1,3}"]  # repetições comuns em regex
+    tipos = ["*", "+", "?", "{1,3}"]  # Repetições comuns em regex
     estruturas = [
         f"{random.choice(caracteres)}{random.choice(tipos)}",
         f"[{random.choice(caracteres)}{random.choice(caracteres)}]{random.choice(tipos)}",
@@ -68,12 +68,36 @@ def imprimir_matriz(matriz, expressoes):
     print("    " + "+".join(["-" * 6 for _ in range(colunas)]))
 
 
+def atualizar_matriz(matriz, expressoes, linhas, colunas):
+    while True:
+        try:
+            linha = (
+                int(
+                    input("Digite o número da linha para atualizar (ou -1 para sair): ")
+                )
+                - 1
+            )
+            if linha == -1:
+                break
+            coluna = int(input("Digite o número da coluna para atualizar: ")) - 1
+            valor = input("Digite o valor a ser inserido na matriz: ").upper()
+
+            if 0 <= linha < linhas and 0 <= coluna < colunas:
+                matriz[linha][coluna] = valor
+                imprimir_matriz(matriz, expressoes)
+            else:
+                print("Índices de linha ou coluna fora do intervalo.")
+        except ValueError:
+            print("Por favor, digite números inteiros válidos.")
+
+
 def main():
     linhas, colunas = obter_tamanho_matriz()
     expressoes = gerar_expressoes(linhas, colunas)
     matriz = inicializar_matriz(linhas, colunas)
 
     imprimir_matriz(matriz, expressoes)
+    atualizar_matriz(matriz, expressoes, linhas, colunas)
 
 
 if __name__ == "__main__":
